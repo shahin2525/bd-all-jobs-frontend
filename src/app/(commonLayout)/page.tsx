@@ -1,13 +1,10 @@
-import Footer from "@/components/shared/Footer";
-import Navbar from "@/components/shared/Navbar";
+import HeroSection from "@/components/modules/home/hero-section";
 import React from "react";
 
 const HomePage = () => {
   return (
     <div>
-      <Navbar></Navbar>
-      <h1>wel come to all job bd</h1>
-      <Footer></Footer>
+      <HeroSection />
     </div>
   );
 };

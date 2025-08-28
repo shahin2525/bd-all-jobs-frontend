@@ -3,7 +3,7 @@ import React from "react";
 
 const RegisterPage = () => {
   return (
-    <div>
+    <div className="w-screen h-screen flex justify-center items-center">
       <RegisterForm />
     </div>
   );

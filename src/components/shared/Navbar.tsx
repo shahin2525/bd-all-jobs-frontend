@@ -1,14 +1,3 @@
-// import React from "react";
-
-// const Navbar = () => {
-//   return (
-//     <div>
-//       <h1>Navbar</h1>
-//     </div>
-//   );
-// };
-
-// export default Navbar;
 "use client";
 
 import { useState, useEffect } from "react";
@@ -122,7 +111,7 @@ export default function Navbar() {
               <Link href="/login">Login</Link>
             </Button>
             <Button size="sm" asChild>
-              <Link href="/signup">Sign Up</Link>
+              <Link href="/register">Sign Up</Link>
             </Button>
           </div>
 
@@ -196,7 +185,7 @@ export default function Navbar() {
                     </SheetClose>
                     <SheetClose asChild>
                       <Button className="flex-1" asChild>
-                        <Link href="/signup">Sign Up</Link>
+                        <Link href="/register">Sign Up</Link>
                       </Button>
                     </SheetClose>
                   </div>

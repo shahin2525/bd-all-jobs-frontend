@@ -37,7 +37,9 @@ export default function RegisterForm() {
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     try {
+      console.log("data", data);
       const res = await registerUser(data);
+      console.log("res", res);
       if (res?.success) {
         toast.success(res?.message);
         router.push("/");
@@ -62,12 +64,39 @@ export default function RegisterForm() {
       </div>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>
-          <FormField
+          {/* <FormField
             control={form.control}
             name="name"
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Name</FormLabel>
+                <FormControl>
+                  <Input {...field} value={field.value || ""} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          /> */}
+          {/* // Split the name input into firstName and lastName */}
+          <FormField
+            control={form.control}
+            name="name.firstName"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>First Name</FormLabel>
+                <FormControl>
+                  <Input {...field} value={field.value || ""} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="name.lastName"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Last Name (Optional)</FormLabel>
                 <FormControl>
                   <Input {...field} value={field.value || ""} />
                 </FormControl>
@@ -132,7 +161,7 @@ export default function RegisterForm() {
       </Form>
       <p className="text-sm text-gray-600 text-center my-3">
         Already have an account ?
-        <Link href="/login" className="text-primary">
+        <Link href="/login" className="text-primary ml-1">
           Login
         </Link>
       </p>

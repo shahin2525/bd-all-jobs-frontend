@@ -16,11 +16,10 @@ import { z } from "zod";
 //     .min(1),
 // });
 export const registrationSchema = z.object({
-  name: z
-    .string()
-    .min(1, "Name is required")
-    .min(2, "Name must be between 2 and 50 characters")
-    .max(50, "Name must be between 2 and 50 characters"),
+  name: z.object({
+    firstName: z.string().min(1, "First name is required"),
+    lastName: z.string().optional(),
+  }),
   email: z.string().min(1, "Email is required").email("Invalid email address"),
   password: z
     .string()

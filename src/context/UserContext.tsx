@@ -1,9 +1,11 @@
+"use client";
 import { getCurrentUser } from "@/services/AuthServices";
 import { IUser } from "@/types";
 import {
   createContext,
   Dispatch,
   SetStateAction,
+  useContext,
   useEffect,
   useState,
 } from "react";
@@ -35,6 +37,14 @@ const UserProvider = ({ children }: { children: React.ReactNode }) => {
       {children}
     </UserContext.Provider>
   );
+};
+
+export const useUser = () => {
+  const context = useContext(UserContext);
+  if (context === undefined) {
+    throw new Error("useUser must be used within the userProvider context");
+  }
+  return context;
 };
 
 export default UserProvider;

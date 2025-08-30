@@ -1,8 +1,9 @@
+"use client";
 import HeroSection from "@/components/modules/home/hero-section";
-import { getCurrentUser } from "@/services/AuthServices";
+import { useUser } from "@/context/UserContext";
 
-const HomePage = async () => {
-  const user = await getCurrentUser();
+const HomePage = () => {
+  const user = useUser();
   console.log(user);
   return (
     <div>

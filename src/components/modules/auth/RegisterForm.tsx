@@ -20,12 +20,13 @@ import Logo from "@/assets/svgs/Logo";
 import { registrationSchema } from "./registerValidation";
 import { registerUser } from "@/services/AuthServices";
 import { toast } from "sonner";
+import { useUser } from "@/context/UserContext";
 
 export default function RegisterForm() {
   const form = useForm({
     resolver: zodResolver(registrationSchema),
   });
-
+  const { setIsLoading } = useUser();
   const {
     formState: { isSubmitting },
   } = form;
@@ -40,6 +41,7 @@ export default function RegisterForm() {
       console.log("data", data);
       const res = await registerUser(data);
       console.log("res", res);
+      setIsLoading(true);
       if (res?.success) {
         toast.success(res?.message);
         router.push("/");

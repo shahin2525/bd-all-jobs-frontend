@@ -2,8 +2,7 @@ import PostJobForm from "@/components/modules/job/create-job/PostJobForm";
 
 const CreateJob = () => {
   return (
-    <div>
-      <h1>create job page</h1>
+    <div className=" flex justify-center items-center">
       <PostJobForm />
     </div>
   );

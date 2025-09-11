@@ -29,7 +29,7 @@ import { useUser } from "@/context/UserContext";
 
 export default function PostJobForm() {
   const { user } = useUser();
-  console.log("user", user);
+
   const [skills, setSkills] = useState<string[]>([]);
   const [educationRequired, setEducationRequired] = useState<string[]>([]);
   const [requirements, setRequirements] = useState<string[]>([]);

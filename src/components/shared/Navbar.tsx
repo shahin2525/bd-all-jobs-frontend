@@ -21,14 +21,16 @@ import { protectedRoutes } from "@/constants";
 export default function Navbar() {
   const pathname = usePathname();
   const router = useRouter();
-  const { user, setIsLoading } = useUser();
+  const { user, setIsLoading, setUser } = useUser();
   console.log("user", user);
   const handleLogout = () => {
     logout();
+    setUser(null);
     setIsLoading(true);
     if (protectedRoutes.some((route) => pathname.match(route))) {
       router.push("/");
     }
+    router.refresh();
   };
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -101,7 +103,7 @@ export default function Navbar() {
 
         {/* Right side - Conditional Auth links and Post Job button */}
         <div className="flex items-center gap-4">
-          {user ? (
+          {user?.email ? (
             <>
               {/* Post Job button - hidden on mobile */}
               <Button className="hidden sm:flex" asChild>
@@ -216,7 +218,7 @@ export default function Navbar() {
                 </nav>
 
                 <div className="mt-auto pt-8 border-t space-y-4">
-                  {user ? (
+                  {user?.email ? (
                     <>
                       <SheetClose asChild>
                         <Button className="w-full" asChild>

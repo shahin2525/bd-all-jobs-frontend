@@ -15,6 +15,10 @@ const nextConfig: NextConfig = {
       bodySizeLimit: "5mb",
     },
   },
+  i18n: {
+    locales: ["en", "bn"], // Supported languages
+    defaultLocale: "en", // Default language
+  },
 };
 
 export default nextConfig;

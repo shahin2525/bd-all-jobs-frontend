@@ -1,0 +1,15 @@
+{
+  "navbar": {
+    "home": "হোম",
+    "findJobs": "চাকরি খুঁজুন",
+    "salaryTools": "বেতন সরঞ্জাম",
+    "careerAdvice": "ক্যারিয়ার পরামর্শ",
+    "blog": "ব্লগ",
+    "contact": "যোগাযোগ"
+  },
+  "auth": {
+    "login": "লগইন",
+    "register": "সাইন আপ",
+    "logout": "লগআউট"
+  }
+}

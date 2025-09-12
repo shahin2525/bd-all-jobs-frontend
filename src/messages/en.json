@@ -1,0 +1,15 @@
+{
+  "navbar": {
+    "home": "Home",
+    "findJobs": "Find Jobs",
+    "salaryTools": "Salary Tools",
+    "careerAdvice": "Career Advice",
+    "blog": "Blog",
+    "contact": "Contact"
+  },
+  "auth": {
+    "login": "Login",
+    "register": "Sign Up",
+    "logout": "Logout"
+  }
+}

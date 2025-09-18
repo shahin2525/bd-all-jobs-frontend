@@ -1,16 +1,7 @@
 "use client";
 
 import * as React from "react";
-import {
-  Bot,
-  Frame,
-  LifeBuoy,
-  Map,
-  PieChart,
-  Send,
-  Settings,
-  SquareTerminal,
-} from "lucide-react";
+import { Bot, Settings, SquareTerminal } from "lucide-react";
 
 import {
   Sidebar,
@@ -25,83 +16,51 @@ import { NavMain } from "./nav-main";
 import { NavUser } from "./nav-user";
 import Link from "next/link";
 import Logo from "@/assets/svgs/Logo";
-
-const data = {
-  navMain: [
-    {
-      title: "Dashboard",
-      url: "/user/dashboard",
-      icon: SquareTerminal,
-      isActive: true,
-    },
-    {
-      title: "Shop",
-      url: "/user/shop/products",
-      icon: Bot,
-      items: [
-        {
-          title: "Manage Products",
-          url: "/user/shop/products",
-        },
-        {
-          title: "Manage Categories",
-          url: "/user/shop/category",
-        },
-        {
-          title: "Manage Brands",
-          url: "/user/shop/brand",
-        },
-        {
-          title: "Manage Coupon",
-          url: "/user/shop/manage-coupon",
-        },
-      ],
-    },
-
-    {
-      title: "Settings",
-      url: "#",
-      icon: Settings,
-      items: [
-        {
-          title: "Profile",
-          url: "/profile",
-        },
-      ],
-    },
-  ],
-  navSecondary: [
-    {
-      title: "Support",
-      url: "#",
-      icon: LifeBuoy,
-    },
-    {
-      title: "Feedback",
-      url: "#",
-      icon: Send,
-    },
-  ],
-  projects: [
-    {
-      name: "Design Engineering",
-      url: "#",
-      icon: Frame,
-    },
-    {
-      name: "Sales & Marketing",
-      url: "#",
-      icon: PieChart,
-    },
-    {
-      name: "Travel",
-      url: "#",
-      icon: Map,
-    },
-  ],
-};
+import { useUser } from "@/context/UserContext";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const { user } = useUser();
+  const data = {
+    navMain: [
+      {
+        // this is for admin
+        title: "Admin Dashboard",
+        url: `/dashboard/${user?.role}`,
+        icon: SquareTerminal,
+        isActive: true,
+        items: [
+          {
+            title: "Manage users",
+            url: `/dashboard/${user?.role}/users`,
+          },
+        ],
+      },
+      {
+        title: "Jobs",
+        url: `/dashboard/${user?.role}/job`,
+        icon: Bot,
+        items: [
+          {
+            title: "Manage Jobs",
+            url: `/dashboard/${user?.role}/job`,
+          },
+        ],
+      },
+
+      {
+        title: "Settings",
+        url: "#",
+        icon: Settings,
+        items: [
+          {
+            title: "Profile",
+            url: "/profile",
+          },
+        ],
+      },
+    ],
+  };
+
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>

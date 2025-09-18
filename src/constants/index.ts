@@ -5,4 +5,6 @@ export const protectedRoutes = [
   "/admin/:page",
   "/recruiter",
   "/recruiter/:page",
+  "/candidate",
+  "/candidate/:page",
 ];

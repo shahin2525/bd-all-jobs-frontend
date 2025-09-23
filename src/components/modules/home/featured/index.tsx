@@ -49,8 +49,8 @@ export default function FeaturedJob({ jobs }: { jobs: Job[] }) {
                 </p>
                 <p>
                   <span className="font-medium">Salary:</span>{" "}
-                  {job.salaryRange.min}–{job.salaryRange.max}{" "}
-                  {job.salaryRange.currency}
+                  {job?.salaryRange?.min}–{job?.salaryRange?.max}{" "}
+                  {job?.salaryRange?.currency}
                 </p>
                 {job.sourceName && (
                   <p className="text-xs text-muted-foreground">

@@ -19,7 +19,7 @@ export const postJob = async (data: FormData) => {
 };
 
 // 🟢 Define the shape of the query options
-export const queryOptionsSchema = z.object({
+const queryOptionsSchema = z.object({
   search: z.string().optional(),
   sort: z.enum(["salary-asc", "salary-desc", "recent"]).optional(),
   page: z.number().min(1).optional(),
@@ -35,7 +35,7 @@ export const queryOptionsSchema = z.object({
 });
 
 // 🟢 Type for strong typing
-export type QueryOptions = z.infer<typeof queryOptionsSchema>;
+type QueryOptions = z.infer<typeof queryOptionsSchema>;
 
 // 🟢 Replace with your backend base URL (env recommended)
 // const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";

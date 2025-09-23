@@ -15,6 +15,7 @@
 // };
 
 // export default HomePage;
+
 import HeroSection from "@/components/modules/home/hero-section";
 import FeaturedJob from "@/components/modules/home/featured";
 

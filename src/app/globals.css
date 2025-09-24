@@ -76,6 +76,12 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+  /* === Brand palette === */
+  --color-brand-primary: #2563eb; /* Indigo – main buttons, links */
+  --color-brand-secondary: #14b8a6; /* Teal – hover/secondary */
+  --color-brand-accent: #f59e0b; /* Amber – highlights/CTAs */
+  --color-brand-success: #22c55e; /* Green – success states */
+  --color-brand-error: #ef4444;
 }
 
 .dark {
@@ -110,6 +116,12 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+  /* Optional darker shades for dark mode */
+  --color-brand-primary: #1e40af;
+  --color-brand-secondary: #0d9488;
+  --color-brand-accent: #d97706;
+  --color-brand-success: #16a34a;
+  --color-brand-error: #dc2626;
 }
 
 @layer base {

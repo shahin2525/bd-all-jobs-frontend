@@ -44,12 +44,14 @@ export default async function HomePage() {
     <main>
       <HeroSection />
       {/* Empty block for future Google AdSense */}
+
       <div className="my-6 w-full flex justify-center">
         {/* Google AdSense code will go here */}
-        <div className="w-[728px] h-[90px] bg-gray-100 text-gray-400 flex items-center justify-center">
+        <div className="w-full max-w-[728px] h-[90px] bg-gray-100 text-gray-400 flex items-center justify-center">
           Google Ad Placeholder
         </div>
       </div>
+
       <FeaturedJob jobs={jobs.data} />
     </main>
   );

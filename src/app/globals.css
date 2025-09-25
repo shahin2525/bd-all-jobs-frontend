@@ -81,7 +81,7 @@
   --color-brand-secondary: #14b8a6; /* Teal – hover/secondary */
   --color-brand-accent: #f59e0b; /* Amber – highlights/CTAs */
   --color-brand-success: #22c55e; /* Green – success states */
-  --color-brand-error: #ef4444;
+  --color-brand-error: #ef4444; /* Red – error states */
 }
 
 .dark {

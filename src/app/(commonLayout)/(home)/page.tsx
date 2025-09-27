@@ -22,6 +22,7 @@ import FeaturedJob from "@/components/modules/home/featured";
 import { Metadata } from "next";
 import { getAllJobsAction } from "@/services/job";
 import CategorySection from "@/components/modules/home/category-section";
+import BlogSection from "@/components/modules/home/blog-section";
 
 // ✅ SEO metadata for Google
 export const metadata: Metadata = {
@@ -55,6 +56,7 @@ export default async function HomePage() {
 
       <FeaturedJob jobs={jobs.data} />
       <CategorySection />
+      <BlogSection />
     </main>
   );
 }

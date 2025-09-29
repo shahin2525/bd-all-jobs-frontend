@@ -34,49 +34,6 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Image from "next/image";
 import Link from "next/link";
 
-// const BlogSection = () => {
-//   return (
-//     <section className="py-12 bg-gray-50">
-//       <div className="container mx-auto px-4">
-//         <div className="mb-8 text-center">
-//           <h2 className="text-3xl font-bold">Career Tips & Insights</h2>
-//           <p className="text-muted-foreground mt-2">
-//             Helpful articles to guide your job search
-//           </p>
-//         </div>
-
-//         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-//           {staticBlogs.map((post) => (
-//             <Card key={post.id} className="overflow-hidden hover:shadow-lg">
-//               <Image
-//                 src={post.thumbnail}
-//                 alt={post.title}
-//                 width={600}
-//                 height={400}
-//                 className="h-48 w-full object-cover"
-//               />
-//               <CardHeader>
-//                 <span className="text-xs uppercase text-primary">
-//                   {post.category}
-//                 </span>
-//                 <CardTitle className="mt-2 line-clamp-2">
-//                   <Link href={`/blog/${post.slug}`}>{post.title}</Link>
-//                 </CardTitle>
-//               </CardHeader>
-//               <CardContent>
-//                 <p className="text-sm text-muted-foreground line-clamp-3">
-//                   {post.excerpt}
-//                 </p>
-//               </CardContent>
-//             </Card>
-//           ))}
-//         </div>
-//       </div>
-//     </section>
-//   );
-// };
-
-// export default BlogSection;
 const BlogSection = () => {
   return (
     <section className="py-12 bg-gray-50">

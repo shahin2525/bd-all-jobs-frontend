@@ -23,6 +23,7 @@ interface Job {
   salary?: string;
   employmentType?: string;
   createdAt: string;
+  category: string;
 }
 
 export default function JobBrowser() {
@@ -30,6 +31,8 @@ export default function JobBrowser() {
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
   const [sort, setSort] = useState<string | undefined>("recent");
+  // console.log(jobs);
+  const task = jobs.map((job) => console.log(job));
 
   useEffect(() => {
     async function fetchJobs() {
@@ -105,6 +108,9 @@ export default function JobBrowser() {
                   <p className="text-sm text-gray-500">{job.location}</p>
                   {job.salary && (
                     <p className="text-sm text-gray-500">💰 {job.salary}</p>
+                  )}
+                  {job.category && (
+                    <p className="text-sm text-gray-500">💰 {job.category}</p>
                   )}
                   {job.employmentType && (
                     <p className="text-xs text-gray-400">

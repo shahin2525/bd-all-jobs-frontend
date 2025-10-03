@@ -141,6 +141,24 @@ export default function HeroSection() {
     },
   ];
 
+  // const handleSearch = async (e: React.FormEvent) => {
+  //   e.preventDefault();
+  //   setIsLoading(true);
+
+  //   try {
+  //     const params = new URLSearchParams();
+
+  //     if (searchTerm) params.set("search", searchTerm);
+  //     if (location) params.set("filters[location]", location);
+
+  //     // Redirect to jobs page with search parameters
+  //     router.push(`/jobs?${params.toString()}`);
+  //   } catch (error) {
+  //     console.error("Search error:", error);
+  //   } finally {
+  //     setIsLoading(false);
+  //   }
+  // };
   const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
@@ -149,7 +167,10 @@ export default function HeroSection() {
       const params = new URLSearchParams();
 
       if (searchTerm) params.set("search", searchTerm);
-      if (location) params.set("filters[location]", location);
+      if (location) params.set("location", location);
+
+      // ✅ Add active status filter by default
+      params.set("status", "active");
 
       // Redirect to jobs page with search parameters
       router.push(`/jobs?${params.toString()}`);
@@ -159,7 +180,6 @@ export default function HeroSection() {
       setIsLoading(false);
     }
   };
-
   const handleCategoryClick = (filter: string, value: string) => {
     const params = new URLSearchParams();
     params.set(`filters[${filter}]`, value);

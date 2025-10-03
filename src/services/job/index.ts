@@ -163,8 +163,8 @@ export async function getAllJobsAction3(
     }
 
     const apiUrl = `${
-      process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000"
-    }/api/jobs?${params.toString()}`;
+      process.env.NEXT_PUBLIC_BASE_API || "http://localhost:5000"
+    }/jobs?${params.toString()}`;
 
     const res = await fetch(apiUrl, {
       method: "GET",

@@ -9,19 +9,23 @@
 // };
 
 // export default FeaturedJob;
+interface FeaturedJobProps {
+  jobs: IJob[]; // Or whatever type your jobs are
+}
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { IJob } from "@/interface";
 import Link from "next/link";
 
-type Job = {
-  _id: string;
-  title: string;
-  companyName: string;
-  location: string;
-  salaryRange: { min: number; max: number; currency: string };
-  sourceName?: string;
-};
+// type Job = {
+//   _id: string;
+//   title: string;
+//   companyName: string;
+//   location: string;
+//   salaryRange: { min: number; max: number; currency: string };
+//   sourceName?: string;
+// };
 
-export default function FeaturedJob({ jobs }: { jobs: Job[] }) {
+export default function FeaturedJob({ jobs }: FeaturedJobProps) {
   return (
     <section className="container mx-auto px-4 py-10">
       <header className="mb-8 text-center">

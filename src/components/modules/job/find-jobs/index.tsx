@@ -13,32 +13,23 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { motion } from "framer-motion";
-import { getAllJobsAction } from "@/services/job";
-
-interface Job {
-  _id: string;
-  title: string;
-  company: string;
-  location: string;
-  salary?: string;
-  employmentType?: string;
-  createdAt: string;
-  category: string;
-}
+import { getAllJobsAction3 } from "@/services/job";
+import { IJob } from "@/interface";
+// import { getAllJobsAction } from "@/services/job";
 
 export default function JobBrowser() {
-  const [jobs, setJobs] = useState<Job[]>([]);
+  const [jobs, setJobs] = useState<IJob[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
   const [sort, setSort] = useState<string | undefined>("recent");
   // console.log(jobs);
-  const task = jobs.map((job) => console.log(job));
+  // const task = jobs.map((job) => console.log(job));
 
   useEffect(() => {
     async function fetchJobs() {
       try {
         setLoading(true);
-        const res = await getAllJobsAction({
+        const res = await getAllJobsAction3({
           search,
           sort: sort as any,
           page: 1,
@@ -103,11 +94,13 @@ export default function JobBrowser() {
                 </CardHeader>
                 <CardContent className="space-y-2">
                   <p className="text-sm text-gray-600 font-medium">
-                    {job.company}
+                    {job?.companyName}
                   </p>
                   <p className="text-sm text-gray-500">{job.location}</p>
-                  {job.salary && (
-                    <p className="text-sm text-gray-500">💰 {job.salary}</p>
+                  {job.salaryRange && (
+                    <p className="text-sm text-gray-500">
+                      💰 {job.salaryRange?.currency}
+                    </p>
                   )}
                   {job.category && (
                     <p className="text-sm text-gray-500">💰 {job.category}</p>
@@ -118,7 +111,7 @@ export default function JobBrowser() {
                     </p>
                   )}
                   <p className="text-xs text-gray-400">
-                    Posted: {new Date(job.createdAt).toLocaleDateString()}
+                    Posted: {new Date(job?.postedAt).toLocaleDateString()}
                   </p>
                   <Button asChild className="w-full mt-2">
                     <a href={`/jobs/${job._id}`}>View Details</a>

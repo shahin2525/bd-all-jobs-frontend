@@ -20,7 +20,7 @@ export const postJob = async (data: FormData) => {
 };
 
 // 🟢 Define the shape of the query options
-const queryOptionsSchema2 = z.object({
+const queryOptionsSchema = z.object({
   search: z.string().optional(),
   sort: z.enum(["salary-asc", "salary-desc", "recent"]).optional(),
   page: z.number().min(1).optional(),
@@ -36,7 +36,7 @@ const queryOptionsSchema2 = z.object({
 });
 
 // 🟢 Type for strong typing
-type QueryOptions2 = z.infer<typeof queryOptionsSchema>;
+type QueryOptions = z.infer<typeof queryOptionsSchema>;
 
 // 🟢 Replace with your backend base URL (env recommended)
 // const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
@@ -84,7 +84,7 @@ export async function getAllJobsAction2(options: QueryOptions) {
 
 //
 // 🟢 Define the shape of the query options
-const queryOptionsSchema = z.object({
+const queryOptionsSchema3 = z.object({
   search: z.string().optional(),
   sort: z.enum(["salary-asc", "salary-desc", "recent", "featured"]).optional(),
   page: z.number().min(1).default(1),
@@ -119,7 +119,7 @@ const queryOptionsSchema = z.object({
 });
 
 // 🟢 Type for strong typing
-export type QueryOptions = z.infer<typeof queryOptionsSchema>;
+export type QueryOptions3 = z.infer<typeof queryOptionsSchema3>;
 
 // 🟢 Response type
 export type JobsResponse = {
@@ -137,12 +137,12 @@ export type JobsResponse = {
 /**
  * Server action to fetch jobs with filtering, sorting, and pagination
  */
-export async function getAllJobsAction(
-  options: QueryOptions
+export async function getAllJobsAction3(
+  options: QueryOptions3
 ): Promise<JobsResponse> {
   try {
     // Validate input
-    const parsed = queryOptionsSchema.parse(options);
+    const parsed = queryOptionsSchema3.parse(options);
 
     // Build query string
     const params = new URLSearchParams();
@@ -213,7 +213,7 @@ export async function getFeaturedJobsAction(
   limit: number = 6
 ): Promise<IJob[]> {
   try {
-    const options: QueryOptions = {
+    const options: QueryOptions3 = {
       filters: {
         status: "active",
         isRemoteAvailable: true,
@@ -223,7 +223,7 @@ export async function getFeaturedJobsAction(
       page: 1,
     };
 
-    const response = await getAllJobsAction(options);
+    const response = await getAllJobsAction3(options);
     return response.data;
   } catch (error) {
     console.error("Error fetching featured jobs:", error);
@@ -239,7 +239,7 @@ export async function getJobsByCategoryAction(
   limit: number = 10
 ): Promise<JobsResponse> {
   try {
-    const options: QueryOptions = {
+    const options: QueryOptions3 = {
       filters: {
         sector: category as any, // Type will be validated by schema
         status: "active",
@@ -248,7 +248,7 @@ export async function getJobsByCategoryAction(
       page: 1,
     };
 
-    return await getAllJobsAction(options);
+    return await getAllJobsAction3(options);
   } catch (error) {
     console.error(`Error fetching ${category} jobs:`, error);
     throw error;

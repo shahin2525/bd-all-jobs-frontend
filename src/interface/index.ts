@@ -1,44 +1,44 @@
 export interface IJob {
-  // Core Info (Required for SEO)
+  // Core Info
+  _id: string;
   title: string;
-  slug: string; // SEO-friendly URL
-  shortDescription?: string; // 150 chars for previews
+  slug: string;
+  shortDescription?: string;
   description: string;
 
-  // Company Information (Required for Google Jobs)
+  // Company Information
   companyName: string;
   companyWebsite?: string;
   companyLogo?: string;
-  companyIndustry?: string; // Moved from bottom for better organization
+  companyIndustry?: string;
 
   // Sector Info
   sector: "government" | "non-government" | "ngo" | "public-sector";
 
-  // Location (Required for Google Jobs)
+  // Location
   location: string;
   jobLocation: {
-    // Made required for Google Jobs compliance
     addressCountry: string;
     addressRegion?: string;
     addressLocality: string;
     postalCode?: string;
     streetAddress?: string;
-    latitude?: number; // Added for better geotargeting
-    longitude?: number; // Added for better geotargeting
+    latitude?: number;
+    longitude?: number;
   };
 
-  // Salary (Required for Google Jobs in some regions)
+  // Salary
   salaryRange?: {
     min: number;
     max: number;
-    currency: string; // Made required if salaryRange exists
-    unitText: "MONTH" | "HOUR" | "YEAR" | "DAY"; // Added for structured data compliance
+    currency: string;
+    unitText: "MONTH" | "HOUR" | "YEAR" | "DAY";
   };
   benefits?: string[];
 
-  // Job Details (Required for Google Jobs)
+  // Job Details
   employmentType:
-    | "FULL-TIME" // Changed to match Schema.org convention
+    | "FULL-TIME"
     | "PART-TIME"
     | "CONTRACTOR"
     | "TEMPORARY"
@@ -49,29 +49,23 @@ export interface IJob {
     | "remote"
     | "internship"
     | "freelance";
-  // employmentType:
-  // | 'full-time'
-  // | 'part-time'
-  // | 'contract'
-  // ;
-  isRemoteAvailable: boolean; // Made required
+  isRemoteAvailable: boolean;
 
   // Job Source
   source: "own" | "third-party";
-
-  applyLink?: string; // Made required for external applications
+  applyLink?: string;
   sourceName?: string;
 
   // Recruiter Info
   postedBy?: string;
 
-  // Metadata (Important for SEO)
+  // Metadata
   experienceLevel?:
     | "ENTRY_LEVEL"
     | "MID_LEVEL"
     | "SENIOR_LEVEL"
     | "DIRECTOR"
-    | "EXECUTIVE"; // Standardized
+    | "EXECUTIVE";
   educationRequired?: string[];
   skillsRequired?: string[];
   requirements?: string[];
@@ -79,14 +73,14 @@ export interface IJob {
   niceToHave?: string[];
 
   // Application Settings
-  applicationDeadline?: Date;
-  applicationMethod: "internal" | "external"; // Made required
+  applicationDeadline?: string; // Date as ISO string
+  applicationMethod: "internal" | "external";
   applyEmail?: string;
   applicationInstructions?: string;
   expectedResponseTime?: string;
   interviewProcess?: string[];
 
-  // EEO Compliance (Important for Google Policies)
+  // EEO Compliance
   equalOpportunityStatement?: string;
   visaSponsorshipAvailable?: boolean;
 
@@ -97,13 +91,13 @@ export interface IJob {
   clicksCount?: number;
 
   // Visibility & Monetization
-  status: "active" | "expired" | "draft" | "pending" | "rejected"; // Added rejected status
+  status: "active" | "expired" | "draft" | "pending" | "rejected";
   isFeatured?: boolean;
   boostLevel?: "normal" | "featured" | "sponsored";
-  premiumUntil?: Date;
+  premiumUntil?: string; // Date as ISO string
   autoRenew?: boolean;
 
-  // SEO (Improved structure)
+  // SEO
   metaTitle?: string;
   metaDescription?: string;
   canonicalUrl?: string;
@@ -112,11 +106,16 @@ export interface IJob {
   subcategory?: string;
   featuredImage?: string;
   ogImage?: string;
-  structuredData?: Record<string, unknown>; // Changed to object for better handling
+  structuredData?: Record<string, unknown>;
 
   // Timestamps
-  postedAt: Date; // Made required
-  expiresAt: Date; // Made required
-  lastUpdatedAt?: Date; // Added for content freshness
-  _id: string;
+  postedAt: string; // Date as ISO string
+  expiresAt: string; // Date as ISO string
+  lastUpdatedAt?: string; // Date as ISO string
+
+  // Frontend specific fields
+  isSaved?: boolean; // Whether current user has saved this job
+  hasApplied?: boolean; // Whether current user has applied
+  isExpired?: boolean; // Computed field for frontend
+  daysLeft?: number; // Computed field for expiration
 }
